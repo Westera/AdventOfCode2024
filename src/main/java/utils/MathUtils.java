@@ -4,6 +4,7 @@ package utils;
  * Utility class providing mathematical functions.
  */
 public class MathUtils {
+
     /**
      * Computes the greatest common divisor (GCD) of two integers using the Euclidean algorithm.
      *

@@ -9,6 +9,7 @@ import java.util.List;
  * Utility class providing methods for reading input from files.
  */
 public class InputUtils {
+
     /**
      * Reads all lines from a file specified by the given file path and returns them as a list of strings.
      *

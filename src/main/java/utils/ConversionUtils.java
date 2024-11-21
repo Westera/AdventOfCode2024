@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
  * Utility class for converting between different data formats.
  */
 public class ConversionUtils {
+
     /**
      * Converts a list of strings to a list of integers.
      *

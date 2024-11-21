@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
  * Utility class providing methods for string manipulation and analysis.
  */
 public class StringUtils {
+
     /**
      * Splits the given input string using the specified delimiter and returns the result as a list of strings.
      *
