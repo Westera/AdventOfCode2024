@@ -11,6 +11,10 @@ jobs:
     name: Analyze
     runs-on: ubuntu-latest
 
+    permissions: # Adjust permissions as needed
+      contents: read
+      security-events: write  # for CodeQL security events access
+
     strategy:
       fail-fast: false
       matrix:
