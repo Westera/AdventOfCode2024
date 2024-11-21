@@ -1,0 +1,44 @@
+name: "CodeQL"
+
+on:
+  workflow_run:
+    workflows: ["Maven CI"]
+    types:
+      - completed
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'java' ]
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
+        # Specify the languages you want to analyze for your project
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Autobuild
+        run: |
+          if [[ ${{ matrix.language }} == 'java' ]]; then
+            mvn install -Dmaven.test.skip=true
+          fi
+
+      # ✏️ If you wish to specify custom queries, you can do so here:
+      #- name: Perform CodeQL Analysis
+      #  run: codeql database analyze /github/workspace/codeql-database --format=sarif --output=results.sarif
+      #  continue-on-error: true
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: '/language:java'
