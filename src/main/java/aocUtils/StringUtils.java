@@ -1,4 +1,4 @@
-package utils;
+package aocUtils;
 
 import java.util.Arrays;
 import java.util.List;

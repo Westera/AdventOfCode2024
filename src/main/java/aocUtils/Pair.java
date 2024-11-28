@@ -1,4 +1,4 @@
-package utils;
+package aocUtils;
 
 /**
  * A generic record that holds a key-value pair.

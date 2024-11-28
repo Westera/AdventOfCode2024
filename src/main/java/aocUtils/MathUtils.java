@@ -1,4 +1,4 @@
-package utils;
+package aocUtils;
 
 /**
  * Utility class providing mathematical functions.

@@ -1,4 +1,4 @@
-package utils;
+package aocUtils;
 
 import org.junit.jupiter.api.Test;
 

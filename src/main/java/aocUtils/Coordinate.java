@@ -1,4 +1,4 @@
-package utils;
+package aocUtils;
 
 /**
  * Represents a coordinate with x and y values.
