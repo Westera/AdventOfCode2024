@@ -37,3 +37,6 @@ target/
 # Ignore operating system files
 .DS_Store
 Thumbs.db
+
+# Ignore daily input files
+*_Day*.txt
