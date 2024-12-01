@@ -14,12 +14,12 @@ import java.util.logging.Logger;
 
 public class Day01 {
 
-    private static final Logger logger = Logger.getLogger(solutions.year2015.Day01.class.getName());
+    private static final Logger logger = Logger.getLogger(Day01.class.getName());
 
     public static void main(String[] args) {
         try (InputStream inputStream = Day01.class.getClassLoader().getResourceAsStream("2024_Day01.txt")) {
             if (inputStream == null) {
-                logger.log(Level.SEVERE, "File not found: 2015_Day01.txt");
+                logger.log(Level.SEVERE, "File not found: 2024_Day01.txt");
                 return;
             }
             run(inputStream);
