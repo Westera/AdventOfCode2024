@@ -1,16 +1,15 @@
 package solutions.year2024;
 
 import aocUtils.InputUtils;
+import aocUtils.ListUtils;
 import aocUtils.Pair;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.IntStream;
 
 public class Day01 {
 
@@ -32,60 +31,42 @@ public class Day01 {
 
     public static void run(InputStream inputStream) throws IOException {
         List<String> rows = InputUtils.readLinesFromInputStream(inputStream);
-        Pair<List<Integer>,List<Integer>> sortedListTuple = createSortedLists(rows);
-        Pair<List<Integer>,List<Integer>> listTuple = createLists(rows);
+        Pair<List<Integer>, List<Integer>> listTuple = createLists(rows);
 
-        logger.info("Total diff is: " + calcTotalDiff(sortedListTuple));
+        int totalDiff = calcTotalDiff(listTuple);
+        logger.info("Total diff is: " + totalDiff);
 
-        logger.info("Similarity score is: " + calcSimilarityScore(listTuple));
+        int similarityScore = calcSimilarityScore(listTuple);
+        logger.info("Similarity score is: " + similarityScore);
     }
 
-    public static int calcTotalDiff(Pair<List<Integer>, List<Integer>> sortedListTuple) {
-        int sum = 0;
-        List<Integer> left = sortedListTuple.key();
-        List<Integer> right = sortedListTuple.value();
+    public static int calcTotalDiff(Pair<List<Integer>, List<Integer>> listTuple) {
+        List<Integer> sortedLeft = listTuple.key().stream().sorted().toList();
+        List<Integer> sortedRight = listTuple.value().stream().sorted().toList();
 
-        for(int i = 0; i < left.size() ; i++) {
-            sum += calcDiff(left.get(i), right.get(i));
-        }
-
-        return sum;
+        return IntStream.range(0, sortedLeft.size())
+                .map(i -> Math.abs(sortedLeft.get(i) - sortedRight.get(i)))
+                .sum();
     }
 
-    public static int calcSimilarityScore(Pair<List<Integer>, List<Integer>> sortedListTuple) {
-        AtomicInteger sum = new AtomicInteger();
-        List<Integer> left = sortedListTuple.key();
-        List<Integer> right = sortedListTuple.value();
+    public static int calcSimilarityScore(Pair<List<Integer>, List<Integer>> listTuple) {
+        Map<Integer, Long> rightFrequency = ListUtils.getFrequencyMap(listTuple.value());
 
-        left.forEach(number -> sum.addAndGet(number * Collections.frequency(right, number)));
-
-        return sum.get();
-    }
-
-    public static int calcDiff(int left, int right) {
-        return Math.abs(left-right);
+        return listTuple.key().stream()
+                .mapToInt(key -> key * rightFrequency.getOrDefault(key, 0L).intValue())
+                .sum();
     }
 
     public static Pair<List<Integer>, List<Integer>> createLists(List<String> rows) {
         List<Integer> left = new ArrayList<>();
         List<Integer> right = new ArrayList<>();
-        rows.forEach( row -> {
+
+        rows.forEach(row -> {
             String[] entries = row.split("\\s+");
-            Integer leftEntry = Integer.parseInt(entries[0]);
-            Integer rightEntry = Integer.parseInt(entries[1]);
-            left.add(leftEntry);
-            right.add(rightEntry);
+            left.add(Integer.parseInt(entries[0]));
+            right.add(Integer.parseInt(entries[1]));
         });
 
         return new Pair<>(left, right);
-    }
-
-    public static Pair<List<Integer>, List<Integer>> createSortedLists(List<String> rows) {
-        Pair<List<Integer>, List<Integer>> sortedListTuple = createLists(rows);
-
-        sortedListTuple.key().sort(Integer::compareTo);
-        sortedListTuple.value().sort(Integer::compareTo);
-
-        return sortedListTuple;
     }
 }
