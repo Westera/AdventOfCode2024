@@ -17,7 +17,7 @@ public class Day02 {
     public static void main(String[] args) {
         try (InputStream inputStream = Day02.class.getClassLoader().getResourceAsStream("2024_Day02.txt")) {
             if (inputStream == null) {
-                logger.log(Level.SEVERE, "File not found: 2024_Day01.txt");
+                logger.log(Level.SEVERE, "File not found: 2024_Day02.txt");
                 return;
             }
             run(inputStream);
