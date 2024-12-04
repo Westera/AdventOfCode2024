@@ -22,4 +22,10 @@ public class InputUtils {
     public static String readInputStreamAsString(InputStream inputStream) throws IOException {
         return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
     }
+
+    public static char[][] readInputAsCharMatrix(InputStream inputStream) throws IOException {
+        return readLinesFromInputStream(inputStream).stream()
+                                                    .map(String::toCharArray)
+                                                    .toArray(char[][]::new);
+    }
 }
