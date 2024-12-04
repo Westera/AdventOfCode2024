@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day03 {
+
     private static final Logger logger = Logger.getLogger(Day03.class.getName());
 
     public static void main(String[] args) {
@@ -37,20 +38,16 @@ public class Day03 {
 
     public static long getSumOfCorrectMulOps(String input) {
         long sumOfmultiplications = 0;
-        final Matcher matcher = Pattern.compile("mul\\([0-9]+,[0-9]+\\)").matcher(input);
+        final Matcher matcher = Pattern.compile("mul\\(([0-9]+),([0-9]+)\\)").matcher(input);
         while(matcher.find()) {
-            String multiplication = matcher.group();
-            String[] operands = multiplication.substring(4, multiplication.length() - 1).split(",");
-            long operand1 = Long.parseLong(operands[0]);
-            long operand2 = Long.parseLong(operands[1]);
-            sumOfmultiplications += operand1 * operand2;
+            sumOfmultiplications += multFromMatch(matcher, 1, 2);
         }
         return sumOfmultiplications;
     }
 
     public static long getSumOfCorrectMulOpsWithDoAndDont(String input) {
         long sumOfmultiplications = 0;
-        final Matcher matcher = Pattern.compile("(mul\\([0-9]+,[0-9]+\\))|(do\\(\\))|(don't\\(\\))").matcher(input);
+        final Matcher matcher = Pattern.compile("(mul\\(([0-9]+),([0-9]+)\\))|(do\\(\\))|(don't\\(\\))").matcher(input);
         boolean doFlag = true;
         while(matcher.find()) {
             String operator = matcher.group();
@@ -59,12 +56,15 @@ public class Day03 {
             } else if(operator.equals("don't()")) {
                 doFlag = false;
             }else if (doFlag) {
-                String[] operands = operator.substring(4, operator.length() - 1).split(",");
-                long operand1 = Long.parseLong(operands[0]);
-                long operand2 = Long.parseLong(operands[1]);
-                sumOfmultiplications += operand1 * operand2;
+                sumOfmultiplications += multFromMatch(matcher, 2, 3);
             }
         }
         return sumOfmultiplications;
+    }
+
+    private static long multFromMatch(Matcher matcher, int groupIndex1, int groupIndex2) {
+        long operand1 = Long.parseLong(matcher.group(groupIndex1));
+        long operand2 = Long.parseLong(matcher.group(groupIndex2));
+        return operand1 * operand2;
     }
 }
