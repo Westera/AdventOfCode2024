@@ -100,6 +100,6 @@ class Day06Test {
         };
 
         long positions = Day06.countLoops(matrix);
-        Assertions.assertEquals(1, positions);
+        Assertions.assertEquals(19, positions);
     }
 }
