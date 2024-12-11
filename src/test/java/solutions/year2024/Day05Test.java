@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.*;
 
 class Day05Test {
+
     @Test
     void testExampleInput() throws IOException {
         Map<Integer, List<Integer>> rulesAfter = new HashMap<>();
