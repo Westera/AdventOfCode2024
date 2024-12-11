@@ -9,7 +9,7 @@ import java.util.*;
 
 class Day05Test {
     @Test
-    void testExampleInputNoFaultTolerance() throws IOException {
+    void testExampleInput() throws IOException {
         Map<Integer, List<Integer>> rulesAfter = new HashMap<>();
         Map<Integer, List<Integer>> rulesBefore = new HashMap<>();
         String input = InputUtils.readInputStreamAsString(Day05Test.class.getClassLoader().getResourceAsStream("2024_Day05Test.txt"));
@@ -30,7 +30,7 @@ class Day05Test {
     }
 
     @Test
-    void testExampleInputOneFaultTolerance() throws IOException {
+    void testExampleInputWithCorrection() throws IOException {
         Map<Integer, List<Integer>> rulesAfter = new HashMap<>();
         Map<Integer, List<Integer>> rulesBefore = new HashMap<>();
         String input = InputUtils.readInputStreamAsString(Day05Test.class.getClassLoader().getResourceAsStream("2024_Day05Test.txt"));
