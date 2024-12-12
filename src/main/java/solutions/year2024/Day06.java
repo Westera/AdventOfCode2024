@@ -90,7 +90,7 @@ public class Day06 {
 
     private static char[][] cloneMatrix(char[][] matrix) {
         // Clone the matrix to avoid modifying the original reference
-        return Arrays.stream(matrix).map(char[]::clone) // Clone each row
+        return Arrays.stream(matrix).map(char[]::clone)
                 .toArray(char[][]::new);
     }
 
