@@ -34,8 +34,8 @@ public class Day06 {
 
     public static void run(InputStream inputStream) throws IOException {
         char[][] matrix = InputUtils.readInputAsCharMatrix(inputStream);
-        logger.info("Number of Positions: " + countPositions(matrix));
-        logger.info("Number of Loops: " + countLoops(matrix));
+        logger.log(Level.INFO,"Number of Positions: {0}", countPositions(matrix));
+        logger.log(Level.INFO,"Number of Loops: {0}", countLoops(matrix));
     }
 
     public static int countPositions(char[][] matrix) {

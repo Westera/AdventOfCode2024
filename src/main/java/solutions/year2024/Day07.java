@@ -30,8 +30,8 @@ public class Day07 {
 
     public static void run(InputStream inputStream) throws IOException {
         List<String> lines = InputUtils.readLinesFromInputStream(inputStream);
-        logger.info("Sum of true equations: " + sumTrueEquations(lines, false));
-        logger.info("Sum of true equations with concat: " + sumTrueEquations(lines, true));
+        logger.log(Level.INFO,"Sum of true equations: {0}", sumTrueEquations(lines, false));
+        logger.log(Level.INFO,"Sum of true equations with concat: {0}", sumTrueEquations(lines, true));
     }
 
     public static long sumTrueEquations(List<String> lines, boolean withConcat) {

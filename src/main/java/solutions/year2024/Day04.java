@@ -29,12 +29,8 @@ public class Day04 {
 
     public static void run(InputStream inputStream) throws IOException {
         char[][] matrix = InputUtils.readInputAsCharMatrix(inputStream);
-        logResult("Number of Xmas", findAllXmas(matrix));
-        logResult("Number of X-mas", findAllCrossMas(matrix));
-    }
-
-    private static void logResult(String message, int result) {
-        logger.info(message + ": " + result);
+        logger.log(Level.INFO,"Number of Xmas: {0}", findAllXmas(matrix));
+        logger.log(Level.INFO,"Number of X-mas: {0}", findAllCrossMas(matrix));
     }
 
     public static int findAllXmas(char[][] matrix) {

@@ -43,9 +43,9 @@ public class Day05 {
             return Arrays.stream(pageParts).map(Integer::parseInt).toList();
         }).toList();
         int printUpdateSum = calcPrintUpdateSum(rulesBefore, rulesAfter, seriesPagesToPrint);
-        logger.info("Print update sum is: " + printUpdateSum);
+        logger.log(Level.INFO, "Print update sum is: {0}", printUpdateSum);
         int printCorrectedSum = calcCorrectedSum(rulesBefore, rulesAfter, seriesPagesToPrint);
-        logger.info("Print update sum is: " + printCorrectedSum);
+        logger.log(Level.INFO, "Print update sum is: {0}", printCorrectedSum);
     }
 
     public static int calcPrintUpdateSum(Map<Integer, List<Integer>> rulesBefore, Map<Integer, List<Integer>> rulesAfter, List<List<Integer>> seriesOfPagesToPrint) {

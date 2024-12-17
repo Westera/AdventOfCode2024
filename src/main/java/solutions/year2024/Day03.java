@@ -31,14 +31,14 @@ public class Day03 {
         String input = InputUtils.readInputStreamAsString(inputStream);
 
         long sumOfCorrectMulOps = getSumOfCorrectMulOps(input);
-        logger.info("Sum of correct add operations: " + sumOfCorrectMulOps);
+        logger.log(Level.INFO,"Sum of correct add operations: {0}", sumOfCorrectMulOps);
         long sumOfCorrectMulOpsWithDoAndDont = getSumOfCorrectMulOpsWithDoAndDont(input);
-        logger.info("Sum of correct add operations: " + sumOfCorrectMulOpsWithDoAndDont);
+        logger.log(Level.INFO,"Sum of correct add operations: {0}", sumOfCorrectMulOpsWithDoAndDont);
     }
 
     public static long getSumOfCorrectMulOps(String input) {
         long sumOfmultiplications = 0;
-        final Matcher matcher = Pattern.compile("mul\\(([0-9]+),([0-9]+)\\)").matcher(input);
+        final Matcher matcher = Pattern.compile("mul\\((\\d+),(\\d+)\\)").matcher(input);
         while(matcher.find()) {
             sumOfmultiplications += multFromMatch(matcher, 1, 2);
         }
@@ -47,7 +47,7 @@ public class Day03 {
 
     public static long getSumOfCorrectMulOpsWithDoAndDont(String input) {
         long sumOfmultiplications = 0;
-        final Matcher matcher = Pattern.compile("(mul\\(([0-9]+),([0-9]+)\\))|(do\\(\\))|(don't\\(\\))").matcher(input);
+        final Matcher matcher = Pattern.compile("(mul\\((\\d+),(\\d+)\\))|(do\\(\\))|(don't\\(\\))").matcher(input);
         boolean doFlag = true;
         while(matcher.find()) {
             String operator = matcher.group();

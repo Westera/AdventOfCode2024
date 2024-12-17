@@ -32,10 +32,10 @@ public class Day02 {
         List<String> rows = InputUtils.readLinesFromInputStream(inputStream);
 
         long totalSafeReports = totalSafeReports(rows);
-        logger.info("Safe reports: " + totalSafeReports);
+        logger.log(Level.INFO, "Safe reports: {0}", totalSafeReports);
 
         totalSafeReports = totalSafeReportsDampened(rows);
-        logger.info("Safe reports: " + totalSafeReports);
+        logger.log(Level.INFO, "Safe reports: {0}", totalSafeReports);
     }
 
     public static boolean isReportSafe(String report) {

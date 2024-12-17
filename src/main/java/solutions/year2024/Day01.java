@@ -34,10 +34,10 @@ public class Day01 {
         Pair<List<Integer>, List<Integer>> listTuple = createLists(rows);
 
         int totalDiff = calcTotalDiff(listTuple);
-        logger.info("Total diff is: " + totalDiff);
+        logger.log(Level.INFO,"Total diff is: {0}", totalDiff);
 
         int similarityScore = calcSimilarityScore(listTuple);
-        logger.info("Similarity score is: " + similarityScore);
+        logger.log(Level.INFO, "Similarity score is: {0}", similarityScore);
     }
 
     public static int calcTotalDiff(Pair<List<Integer>, List<Integer>> listTuple) {
